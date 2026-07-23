@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="STRING je specializirana AdTech, programmatic in retail media svetovalna ter izvedbena entiteta. Monetizacija digitalnih medijev, header bidding, Prebid, ad serverji, CMP in podatkovne rešitve." />
+  <meta name="author" content="STRING" />
+  <meta name="theme-color" content="#0a0d14" />
+
+  <meta property="og:title" content="STRING | AdTech, Programmatic & Retail Media" />
+  <meta property="og:description" content="Digitalnim medijem in podjetjem pomagamo zgraditi boljšo oglaševalsko, podatkovno in monetizacijsko infrastrukturo." />
+  <meta property="og:type" content="website" />
+
+  <title>STRING | AdTech, Programmatic & Retail Media</title>
+
+  <style>
+    :root {
+      --bg: #080b12;
+      --bg-soft: #0e1320;
+      --panel: rgba(18, 25, 39, 0.72);
+      --panel-solid: #121927;
+      --text: #f7f8fb;
+      --muted: #a9b3c7;
+      --line: rgba(255, 255, 255, 0.10);
+      --primary: #7c5cff;
+      --primary-light: #a997ff;
+      --secondary: #24d5b5;
+      --warning: #ffbd59;
+      --shadow: 0 30px 80px rgba(0, 0, 0, 0.35);
+      --radius: 24px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 12% 0%, rgba(124, 92, 255, 0.22), transparent 34rem),
+        radial-gradient(circle at 92% 30%, rgba(36, 213, 181, 0.12), transparent 30rem),
+        var(--bg);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    a {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    .nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(18px);
+      background: rgba(8, 11, 18, 0.74);
+      border-bottom: 1px solid var(--line);
+    }
+
+    nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 12px 32px rgba(124, 92, 255, 0.35);
+      color: #fff;
+      font-size: 1.05rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--muted);
+      font-size: 0.93rem;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      padding: 11px 17px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--text) !important;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .hero {
+      position: relative;
+      padding: 108px 0 82px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+      align-items: center;
+      gap: 72px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 13px;
+      margin-bottom: 24px;
+      border: 1px solid rgba(124, 92, 255, 0.34);
+      border-radius: 999px;
+      background: rgba(124, 92, 255, 0.08);
+      color: #d8d0ff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--secondary);
+      box-shadow: 0 0 0 5px rgba(36, 213, 181, 0.12);
+    }
+
+    h1 {
+      max-width: 850px;
+      font-size: clamp(3.1rem, 7vw, 6.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.065em;
+      font-weight: 850;
+    }
+
+    .gradient-text {
+      background: linear-gradient(100deg, #ffffff 8%, #b9adff 52%, #63ead1 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy {
+      max-width: 720px;
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: clamp(1.06rem, 1.8vw, 1.27rem);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 36px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 0 22px;
+      border-radius: 15px;
+      font-weight: 750;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+    }
+
+    .button-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--primary), #5b8cff);
+      box-shadow: 0 18px 46px rgba(124, 92, 255, 0.3);
+    }
+
+    .button-secondary {
+      border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.045);
+    }
+
+    .hero-card {
+      position: relative;
+      min-height: 410px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.09), rgba(255, 255, 255, 0.025)),
+        var(--panel);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: -80px -60px auto auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      background: rgba(124, 92, 255, 0.3);
+      filter: blur(56px);
+    }
+
+    .terminal {
+      position: relative;
+      height: 100%;
+      min-height: 354px;
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      background: rgba(4, 7, 13, 0.72);
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      font-size: 0.85rem;
+      color: #dbe4f6;
+    }
+
+    .terminal-top {
+      display: flex;
+      gap: 7px;
+      margin-bottom: 22px;
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #465064;
+    }
+
+    .terminal-dot:first-child { background: #ff6b6b; }
+    .terminal-dot:nth-child(2) { background: #ffd166; }
+    .terminal-dot:nth-child(3) { background: #4fd1a8; }
+
+    .code-line {
+      margin-bottom: 10px;
+      opacity: 0;
+      transform: translateY(5px);
+      animation: reveal 0.55s ease forwards;
+    }
+
+    .code-line:nth-child(2) { animation-delay: 0.2s; }
+    .code-line:nth-child(3) { animation-delay: 0.5s; }
+    .code-line:nth-child(4) { animation-delay: 0.8s; }
+    .code-line:nth-child(5) { animation-delay: 1.1s; }
+    .code-line:nth-child(6) { animation-delay: 1.4s; }
+    .code-line:nth-child(7) { animation-delay: 1.7s; }
+
+    .code-purple { color: #bbaeff; }
+    .code-green { color: #5ce2c7; }
+    .code-yellow { color: #ffd78a; }
+    .code-muted { color: #79879f; }
+
+    @keyframes reveal {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .stats {
+      padding: 0 0 88px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.035);
+      overflow: hidden;
+    }
+
+    .stat {
+      padding: 28px;
+      border-right: 1px solid var(--line);
+    }
+
+    .stat:last-child {
+      border-right: 0;
+    }
+
+    .stat-value {
+      font-size: 2rem;
+      font-weight: 850;
+      letter-spacing: -0.04em;
+    }
+
+    .stat-label {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    section {
+      padding: 92px 0;
+    }
+
+    .section-heading {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 60px;
+      align-items: end;
+      margin-bottom: 48px;
+    }
+
+    .section-kicker {
+      margin-bottom: 12px;
+      color: var(--secondary);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      font-size: clamp(2.3rem, 5vw, 4.3rem);
+      line-height: 1.03;
+      letter-spacing: -0.055em;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      position: relative;
+      min-height: 300px;
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018));
+      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(124, 92, 255, 0.42);
+      background: linear-gradient(145deg, rgba(124, 92, 255, 0.10), rgba(255, 255, 255, 0.02));
+    }
+
+    .service-number {
+      color: var(--primary-light);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+
+    .service-card h3 {
+      margin-top: 55px;
+      font-size: 1.43rem;
+      line-height: 1.18;
+      letter-spacing: -0.035em;
+    }
+
+    .service-card p {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .expertise-strip {
+      margin-top: 18px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--panel);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tag {
+      padding: 9px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: #dce3f0;
+      background: rgba(255, 255, 255, 0.035);
+      font-size: 0.82rem;
+      font-weight: 650;
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .work-card {
+      min-height: 370px;
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: var(--panel);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .work-card::after {
+      content: "";
+      position: absolute;
+      right: -90px;
+      bottom: -110px;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: rgba(124, 92, 255, 0.15);
+      filter: blur(15px);
+    }
+
+    .work-card:nth-child(2)::after {
+      background: rgba(36, 213, 181, 0.13);
+    }
+
+    .work-type {
+      color: var(--secondary);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .work-card h3 {
+      max-width: 520px;
+      margin-top: 18px;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    .work-card p {
+      max-width: 560px;
+      margin-top: 18px;
+      color: var(--muted);
+    }
+
+    .work-result {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 28px;
+      margin-top: 46px;
+    }
+
+    .result-item strong {
+      display: block;
+      font-size: 1.3rem;
+      letter-spacing: -0.03em;
+    }
+
+    .result-item span {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 65px;
+      align-items: start;
+    }
+
+    .about-card {
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background:
+        linear-gradient(145deg, rgba(124, 92, 255, 0.12), rgba(255, 255, 255, 0.025)),
+        var(--panel);
+    }
+
+    .avatar {
+      display: grid;
+      place-items: center;
+      width: 92px;
+      height: 92px;
+      margin-bottom: 30px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      font-size: 2rem;
+      font-weight: 850;
+      box-shadow: 0 18px 45px rgba(124, 92, 255, 0.28);
+    }
+
+    .about-card h3 {
+      font-size: 1.7rem;
+      letter-spacing: -0.04em;
+    }
+
+    .about-card p {
+      margin-top: 12px;
+      color: var(--muted);
+    }
+
+    .about-copy p {
+      margin-bottom: 22px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .about-copy strong {
+      color: var(--text);
+    }
+
+    .principles {
+      margin-top: 34px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .principle {
+      display: flex;
+      gap: 14px;
+      padding: 16px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .principle-icon {
+      color: var(--secondary);
+      font-weight: 900;
+    }
+
+    .contact-panel {
+      position: relative;
+      padding: 62px;
+      border: 1px solid rgba(124, 92, 255, 0.35);
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(36, 213, 181, 0.18), transparent 25rem),
+        linear-gradient(135deg, rgba(124, 92, 255, 0.19), rgba(255, 255, 255, 0.035));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .contact-panel h2 {
+      max-width: 800px;
+    }
+
+    .contact-panel p {
+      max-width: 700px;
+      margin-top: 20px;
+      color: #c5cede;
+      font-size: 1.08rem;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    footer {
+      padding: 34px 0 45px;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+    }
+
+    .mobile-menu {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+      font-size: 1.25rem;
+      cursor: pointer;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .section-heading,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 76px;
+      }
+
+      .hero-grid {
+        gap: 45px;
+      }
+
+      .hero-card {
+        min-height: auto;
+      }
+
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .stat:nth-child(2) {
+        border-right: 0;
+      }
+
+      .stat:nth-child(-n+2) {
+        border-bottom: 1px solid var(--line);
+      }
+
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .container {
+        width: min(calc(100% - 28px), var(--max-width));
+      }
+
+      nav {
+        min-height: 68px;
+      }
+
+      .mobile-menu {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 68px;
+        left: 14px;
+        right: 14px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 12px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(10, 14, 23, 0.97);
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links a {
+        padding: 13px 12px;
+      }
+
+      .nav-cta {
+        margin-top: 4px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 16vw, 4.8rem);
+      }
+
+      .hero-copy {
+        font-size: 1rem;
+      }
+
+      .hero-actions,
+      .contact-links {
+        flex-direction: column;
+      }
+
+      .button {
+        width: 100%;
+      }
+
+      .stats-grid,
+      .services-grid,
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .stat {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .stat:last-child {
+        border-bottom: 0;
+      }
+
+      section {
+        padding: 70px 0;
+      }
+
+      .section-heading {
+        gap: 22px;
+      }
+
+      .service-card {
+        min-height: 260px;
+      }
+
+      .contact-panel {
+        padding: 34px 24px;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav-wrap">
+    <div class="container">
+      <nav aria-label="Glavna navigacija">
+        <a class="brand" href="#top" aria-label="STRING, domov">
+          <span class="brand-mark">S</span>
+          <span>STRING</span>
+        </a>
+
+        <button class="mobile-menu" type="button" aria-label="Odpri navigacijo" aria-expanded="false">☰</button>
+
+        <div class="nav-links">
+          <a href="#storitve">Storitve</a>
+          <a href="#projekti">Projekti</a>
+          <a href="#o-meni">O podjetju</a>
+          <a class="nav-cta" href="#kontakt">Kontakt</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">
+            <span class="eyebrow-dot"></span>
+            AdTech, Programmatic & Retail Media
+          </div>
+
+          <h1>
+            Digitalno oglaševanje,
+            <span class="gradient-text">ki dejansko deluje.</span>
+          </h1>
+
+          <p class="hero-copy">
+            Medijem, platformam in podjetjem pomagamo zgraditi boljšo oglaševalsko,
+            podatkovno in monetizacijsko infrastrukturo, od strategije do produkcijske implementacije.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button button-primary" href="mailto:struna.simon@gmail.com">
+              Pogovorimo se
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="button button-secondary" href="#storitve">
+              Poglej storitve
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-card" aria-label="Področja strokovnosti">
+          <div class="terminal">
+            <div class="terminal-top" aria-hidden="true">
+              <span class="terminal-dot"></span>
+              <span class="terminal-dot"></span>
+              <span class="terminal-dot"></span>
+            </div>
+            <div class="code-line"><span class="code-purple">const</span> consultant = {</div>
+            <div class="code-line">&nbsp;&nbsp;name: <span class="code-yellow">"STRING"</span>,</div>
+            <div class="code-line">&nbsp;&nbsp;focus: [<span class="code-green">"AdTech"</span>, <span class="code-green">"Programmatic"</span>],</div>
+            <div class="code-line">&nbsp;&nbsp;stack: [<span class="code-green">"Prebid"</span>, <span class="code-green">"GAM"</span>, <span class="code-green">"OpenRTB"</span>],</div>
+            <div class="code-line">&nbsp;&nbsp;markets: <span class="code-yellow">"European markets & Adriatic"</span>,</div>
+            <div class="code-line">&nbsp;&nbsp;approach: <span class="code-yellow">"hands-on"</span></div>
+            <div class="code-line">}; <span class="code-muted">// revenue meets technology</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="stats" aria-label="Ključne izkušnje">
+      <div class="container">
+        <div class="stats-grid fade-up">
+          <div class="stat">
+            <div class="stat-value">150+</div>
+            <div class="stat-label">digitalnih medijev v portfelju</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">3B+</div>
+            <div class="stat-label">mesečnih oglasnih zahtevkov</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">10+</div>
+            <div class="stat-label">let izkušenj v digitalnem oglaševanju</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">360°</div>
+            <div class="stat-label">strategija, tehnologija in prihodki</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="storitve">
+      <div class="container">
+        <div class="section-heading fade-up">
+          <div>
+            <div class="section-kicker">Storitve</div>
+            <h2>Od diagnoze do implementacije.</h2>
+          </div>
+          <p class="section-intro">
+            Ne prodajam generičnih predstavitev. Analiziram dejanske podatke, tehnično arhitekturo
+            in poslovni model, nato pripravim rešitev, ki jo je mogoče izvesti in meriti.
+          </p>
+        </div>
+
+        <div class="services-grid">
+          <article class="service-card fade-up">
+            <div class="service-number">01</div>
+            <h3>Programmatic monetizacija</h3>
+            <p>
+              Pregled prihodkov, partnerjev, floor strategije, demand mixa, viewabilityja,
+              timeoutov in drugih dejavnikov, ki vplivajo na dejanski yield.
+            </p>
+          </article>
+
+          <article class="service-card fade-up">
+            <div class="service-number">02</div>
+            <h3>Header Bidding & Prebid</h3>
+            <p>
+              Arhitektura, implementacija in optimizacija Prebid.js, bidderjev, ad unitov,
+              consent signalov, analytics adapterjev in povezave z ad serverjem.
+            </p>
+          </article>
+
+          <article class="service-card fade-up">
+            <div class="service-number">03</div>
+            <h3>Ad server & oglasna infrastruktura</h3>
+            <p>
+              Google Ad Manager, direktne kampanje, prioritete, formati, tracking,
+              reporting in procesi za učinkovito upravljanje oglasnega inventarja.
+            </p>
+          </article>
+
+          <article class="service-card fade-up">
+            <div class="service-number">04</div>
+            <h3>CMP, zasebnost & podatki</h3>
+            <p>
+              TCF, consent signalizacija, vendor konfiguracije, first-party segmenti,
+              DMP/CDP povezave in podatkovna podpora oglaševalskim primerom uporabe.
+            </p>
+          </article>
+
+          <article class="service-card fade-up">
+            <div class="service-number">05</div>
+            <h3>Retail Media Networks</h3>
+            <p>
+              Strategija, produkti, oglasni formati, podatkovni segmenti, ponudba za dobavitelje
+              in tehnična zasnova retail media infrastrukture.
+            </p>
+          </article>
+
+          <article class="service-card fade-up">
+            <div class="service-number">06</div>
+            <h3>Partnerstva & business development</h3>
+            <p>
+              Iskanje, ocena in onboarding novih SSP, video, native, content in data partnerjev,
+              skupaj s komercialnim ter tehničnim vodenjem testov.
+            </p>
+          </article>
+        </div>
+
+        <div class="expertise-strip fade-up" aria-label="Tehnologije in področja">
+          <div class="tags">
+            <span class="tag">Prebid.js</span>
+            <span class="tag">Google Ad Manager</span>
+            <span class="tag">OpenRTB</span>
+            <span class="tag">Header Bidding</span>
+            <span class="tag">AdX & AdSense</span>
+            <span class="tag">CMP / IAB TCF</span>
+            <span class="tag">SSP & DSP</span>
+            <span class="tag">DMP / CDP</span>
+            <span class="tag">Retail Media</span>
+            <span class="tag">Yield Optimization</span>
+            <span class="tag">BI & Reporting</span>
+            <span class="tag">AEO & Publisher Growth</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projekti">
+      <div class="container">
+        <div class="section-heading fade-up">
+          <div>
+            <div class="section-kicker">Izbrani projekti</div>
+            <h2>Rešitve za realne poslovne probleme.</h2>
+          </div>
+          <p class="section-intro">
+            Delam na presečišču prihodkov, produkta in tehnologije. Največ vrednosti ustvarim tam,
+            kjer je treba razumeti celoten sistem, ne le enega orodja.
+          </p>
+        </div>
+
+        <div class="work-grid">
+          <article class="work-card fade-up">
+            <div>
+              <div class="work-type">Publisher monetization</div>
+              <h3>Programmatic infrastruktura za mrežo digitalnih medijev</h3>
+              <p>
+                Upravljanje demand partnerjev, Prebid arhitekture, ad serverja, consent signalov,
+                poročanja in optimizacije prihodkov za raznolik portfelj publisherjev.
+              </p>
+            </div>
+            <div class="work-result">
+              <div class="result-item">
+                <strong>150+</strong>
+                <span>medijev</span>
+              </div>
+              <div class="result-item">
+                <strong>20+</strong>
+                <span>partnerjev</span>
+              </div>
+              <div class="result-item">
+                <strong>več trgov</strong>
+                <span>CEE & Adriatic</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card fade-up">
+            <div>
+              <div class="work-type">Retail media</div>
+              <h3>Zasnova novega prihodkovnega kanala za trgovca</h3>
+              <p>
+                Povezava ad serverja, first-party podatkov, dobaviteljskih kampanj in odprtega spleta
+                v enoten retail media model z merljivimi produkti.
+              </p>
+            </div>
+            <div class="work-result">
+              <div class="result-item">
+                <strong>AdServer</strong>
+                <span>centralno upravljanje</span>
+              </div>
+              <div class="result-item">
+                <strong>DMP</strong>
+                <span>segmentacija</span>
+              </div>
+              <div class="result-item">
+                <strong>PMP</strong>
+                <span>aktivacija</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card fade-up">
+            <div>
+              <div class="work-type">AdTech consulting</div>
+              <h3>Prenova oglaševalske in podatkovne infrastrukture</h3>
+              <p>
+                Nova zasnova oglasnih pozicij, implementacija ad serverja, segmentacija uporabnikov,
+                marketinška avtomatizacija in priprava oglaševalske ponudbe.
+              </p>
+            </div>
+            <div class="work-result">
+              <div class="result-item">
+                <strong>Audit</strong>
+                <span>obstoječega stanja</span>
+              </div>
+              <div class="result-item">
+                <strong>Build</strong>
+                <span>nova infrastruktura</span>
+              </div>
+              <div class="result-item">
+                <strong>Enable</strong>
+                <span>usposabljanje ekipe</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="work-card fade-up">
+            <div>
+              <div class="work-type">Revenue optimization</div>
+              <h3>Neodvisni testi novih monetizacijskih partnerjev</h3>
+              <p>
+                Primerjava inkrementalnih prihodkov, uporabniške izkušnje, tehničnega vpliva,
+                transparentnosti poročanja in dolgoročne vrednosti sodelovanja.
+              </p>
+            </div>
+            <div class="work-result">
+              <div class="result-item">
+                <strong>Test</strong>
+                <span>kontrolirana uvedba</span>
+              </div>
+              <div class="result-item">
+                <strong>Measure</strong>
+                <span>dejanski uplift</span>
+              </div>
+              <div class="result-item">
+                <strong>Scale</strong>
+                <span>le uspešne rešitve</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="o-meni">
+      <div class="container about-grid">
+        <div class="about-card fade-up">
+          <div class="avatar" aria-hidden="true">S</div>
+          <h3>STRING</h3>
+          <p>
+            Specializirana AdTech in programmatic poslovna entiteta iz Slovenije, z dolgoletnimi izkušnjami pri delu
+            z digitalnimi mediji, oglaševalskimi platformami in tehnološkimi partnerji.
+          </p>
+          <div class="tags" style="margin-top: 24px;">
+            <span class="tag">Slovenia</span>
+            <span class="tag">Europe</span>
+            <span class="tag">Available across Europe</span>
+          </div>
+        </div>
+
+        <div class="about-copy fade-up">
+          <div class="section-kicker">O podjetju</div>
+          <h2>Poslovno razmišljanje, tehnično razumevanje.</h2>
+          <p style="margin-top: 28px;">
+            STRING je specializirana poslovna entiteta na področju AdTecha, programmatica, podatkovnih rešitev in retail media. Delujemo na presečišču prihodkov, produkta in tehnologije ter dobro razumemo, kako hitro se lahko dobra ideja izgubi med tehničnimi omejitvami, nepreglednimi partnerstvi in napačnimi metrikami.
+          </p>
+          <p>
+            Naš pristop je praktičen. Najprej identificiramo največje poslovne in tehnične vzvode, nato povežemo <strong>poslovni cilj, uporabniško izkušnjo, podatke in tehnologijo</strong> v izvedljiv načrt.
+          </p>
+          <p>
+            STRING sodeluje kot svetovalni in izvedbeni partner, zunanji AdTech lead, projektni vodja ali specialist za konkreten tehnični oziroma monetizacijski izziv.
+          </p>
+
+          <div class="principles">
+            <div class="principle">
+              <span class="principle-icon">✓</span>
+              <div>
+                <strong>Neodvisen pogled</strong><br />
+                <span style="color: var(--muted);">Priporočam rešitev, ki je smiselna za naročnika, ne za posameznega vendorja.</span>
+              </div>
+            </div>
+            <div class="principle">
+              <span class="principle-icon">✓</span>
+              <div>
+                <strong>Hands-on izvedba</strong><br />
+                <span style="color: var(--muted);">Od strategije in specifikacije do testiranja, implementacije in optimizacije.</span>
+              </div>
+            </div>
+            <div class="principle">
+              <span class="principle-icon">✓</span>
+              <div>
+                <strong>Merljiv rezultat</strong><br />
+                <span style="color: var(--muted);">Jasne metrike, transparentni testi in odločitve na podlagi dejanskih podatkov.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="kontakt">
+      <div class="container">
+        <div class="contact-panel fade-up">
+          <div class="section-kicker">Kontakt</div>
+          <h2>Imaš AdTech, monetizacijski ali retail media izziv?</h2>
+          <p>
+            Opišite trenutno situacijo, cilj in največjo oviro. Že v prvem pogovoru lahko
+            preverimo, kje so najverjetnejši vzvodi in kako lahko STRING podpre projekt.
+          </p>
+
+          <div class="contact-links">
+            <a class="button button-primary" href="mailto:struna.simon@gmail.com">
+              struna.simon@gmail.com
+              <span aria-hidden="true">↗</span>
+            </a>
+            <a class="button button-secondary" href="mailto:struna.simon@gmail.com?subject=STRING%20project%20inquiry">
+              Pošlji povpraševanje
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> STRING.</span>
+      <span>AdTech · Programmatic · Data · Retail Media</span>
+    </div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector(".mobile-menu");
+    const navLinks = document.querySelector(".nav-links");
+
+    menuButton.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(isOpen));
+      menuButton.textContent = isOpen ? "×" : "☰";
+    });
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuButton.setAttribute("aria-expanded", "false");
+        menuButton.textContent = "☰";
+      });
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".fade-up").forEach(element => observer.observe(element));
+  </script>
+</body>
+</html>
