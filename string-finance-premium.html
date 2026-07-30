@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Praktičen finančni mentoring za bolj urejene osebne finance, varčevanje in dolgoročno investiranje.">
+  <meta name="theme-color" content="#0d1712">
+  <title>STRING Finance | Uredi svoj denar</title>
+  <style>
+    :root{
+      --bg:#f4f5ef;
+      --paper:#ffffff;
+      --ink:#0d1712;
+      --muted:#667168;
+      --green:#1f8b5d;
+      --green-dark:#126a44;
+      --lime:#dff26b;
+      --soft:#eaf3ed;
+      --line:#dce3dd;
+      --shadow:0 24px 70px rgba(13,23,18,.11);
+      --radius:28px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(circle at 84% 4%,rgba(223,242,107,.24),transparent 23rem),
+        var(--bg);
+      color:var(--ink);
+      line-height:1.6;
+    }
+
+    a{color:inherit}
+    .wrap{width:min(1160px,calc(100% - 40px));margin:auto}
+
+    .nav{
+      min-height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:11px;
+      text-decoration:none;
+      font-weight:900;
+      letter-spacing:.04em;
+    }
+
+    .brand-mark{
+      width:35px;height:35px;border-radius:11px;
+      display:grid;place-items:center;
+      color:white;background:var(--ink);
+      font-size:.82rem;
+    }
+
+    .nav-links{display:flex;align-items:center;gap:24px}
+    .nav-links a{text-decoration:none;color:var(--muted);font-weight:650;font-size:.94rem}
+    .nav-links a:hover{color:var(--ink)}
+    .mini-cta{color:white!important;background:var(--ink);padding:10px 16px;border-radius:999px}
+
+    .hero{
+      padding:70px 0 56px;
+      display:grid;
+      grid-template-columns:1.08fr .92fr;
+      align-items:center;
+      gap:58px;
+    }
+
+    .eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;
+      background:rgba(255,255,255,.72);
+      border:1px solid var(--line);
+      font-size:.78rem;font-weight:850;
+      letter-spacing:.08em;text-transform:uppercase;
+      color:var(--green-dark);
+    }
+
+    .dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
+
+    h1{
+      margin:22px 0 24px;
+      max-width:760px;
+      font-size:clamp(3rem,7vw,6.6rem);
+      line-height:.93;
+      letter-spacing:-.065em;
+    }
+
+    h1 em{font-style:normal;position:relative;z-index:0;white-space:nowrap}
+    h1 em:after{
+      content:"";position:absolute;left:-2%;right:-2%;bottom:7%;
+      height:20%;background:var(--lime);z-index:-1;
+      transform:rotate(-1.3deg);border-radius:4px;
+    }
+
+    .lead{max-width:700px;margin:0 0 30px;color:var(--muted);font-size:1.16rem}
+    .actions{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{
+      min-height:52px;padding:0 21px;border-radius:999px;
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      text-decoration:none;font-weight:800;transition:.2s ease;border:0;cursor:pointer;
+    }
+    .btn-primary{background:var(--green);color:white;box-shadow:0 10px 28px rgba(31,139,93,.22)}
+    .btn-primary:hover{background:var(--green-dark);transform:translateY(-2px)}
+    .btn-secondary{background:white;border:1px solid var(--line)}
+    .btn-secondary:hover{transform:translateY(-2px);box-shadow:0 10px 25px rgba(13,23,18,.06)}
+
+    .trust-row{margin-top:28px;display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:.9rem;font-weight:650}
+    .trust-row span{display:flex;align-items:center;gap:7px}
+    .trust-row b{color:var(--green)}
+
+    .visual{position:relative;min-height:550px}
+    .dashboard{
+      position:absolute;inset:24px 0 0 34px;
+      background:var(--ink);color:white;border-radius:34px;
+      padding:28px;box-shadow:var(--shadow);overflow:hidden;
+    }
+    .dashboard:before{
+      content:"";position:absolute;width:260px;height:260px;border-radius:50%;
+      background:rgba(223,242,107,.13);right:-90px;top:-100px;
+    }
+    .dash-top{display:flex;justify-content:space-between;gap:20px;position:relative}
+    .dash-label{font-size:.78rem;text-transform:uppercase;letter-spacing:.09em;color:#aab6ae;font-weight:800}
+    .dash-value{font-size:2.25rem;font-weight:900;letter-spacing:-.045em;margin-top:5px}
+    .pill{height:max-content;background:rgba(223,242,107,.16);color:var(--lime);padding:7px 10px;border-radius:999px;font-weight:800;font-size:.8rem}
+
+    .hero-chart{margin:28px 0 24px;padding:20px 16px 12px;border:1px solid rgba(255,255,255,.1);border-radius:22px;background:rgba(255,255,255,.035)}
+    .hero-chart svg{display:block;width:100%;height:180px}
+    .hero-chart .gridline{stroke:rgba(255,255,255,.08);stroke-width:1}
+    .hero-chart .area{fill:url(#heroGradient)}
+    .hero-chart .line{fill:none;stroke:var(--lime);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+
+    .dash-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .metric{padding:16px;border-radius:18px;background:rgba(255,255,255,.07)}
+    .metric small{display:block;color:#aab6ae;margin-bottom:4px}
+    .metric strong{font-size:1.2rem}
+    .float-card{
+      position:absolute;left:0;bottom:22px;width:210px;
+      background:white;border:1px solid var(--line);
+      border-radius:22px;padding:18px;box-shadow:var(--shadow);
+    }
+    .float-card .tag{color:var(--green);font-weight:850;font-size:.78rem;text-transform:uppercase;letter-spacing:.07em}
+    .float-card strong{display:block;font-size:1.32rem;margin:4px 0}
+    .float-card p{margin:0;color:var(--muted);font-size:.88rem}
+
+    section{padding:66px 0}
+    .section-head{max-width:760px;margin-bottom:30px}
+    .section-head h2{margin:0 0 12px;font-size:clamp(2.3rem,5vw,4.3rem);line-height:1;letter-spacing:-.05em}
+    .section-head p{margin:0;color:var(--muted);font-size:1.05rem}
+
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{background:var(--paper);border:1px solid var(--line);border-radius:24px;padding:25px}
+    .card-no{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;background:var(--soft);color:var(--green-dark);font-weight:900;margin-bottom:44px}
+    .card h3{margin:0 0 10px;font-size:1.22rem}
+    .card p{margin:0;color:var(--muted)}
+
+    .calculator-shell{
+      background:var(--ink);color:white;border-radius:34px;
+      padding:32px;box-shadow:var(--shadow);
+      display:grid;grid-template-columns:.85fr 1.15fr;gap:30px;
+    }
+
+    .calculator-copy h2{font-size:clamp(2.2rem,4vw,3.7rem);line-height:1;margin:0 0 16px;letter-spacing:-.05em}
+    .calculator-copy p{color:#b9c5bd;margin:0 0 24px}
+    .calc-note{font-size:.85rem;color:#91a096;margin-top:18px}
+
+    .controls{display:grid;grid-template-columns:1fr 1fr;gap:15px}
+    .field{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:15px}
+    .field label{display:block;color:#b9c5bd;font-size:.82rem;font-weight:750;margin-bottom:7px}
+    .field input{
+      width:100%;border:0;outline:0;background:transparent;color:white;
+      font:inherit;font-size:1.16rem;font-weight:800;
+    }
+    .field-wide{grid-column:1/-1}
+
+    .scenario-result{
+      background:white;color:var(--ink);border-radius:26px;padding:24px;
+    }
+
+    .scenario-tabs{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:22px}
+    .scenario-btn{
+      border:1px solid var(--line);background:var(--bg);color:var(--muted);
+      border-radius:999px;padding:9px 13px;font-weight:800;cursor:pointer;
+    }
+    .scenario-btn.active{background:var(--ink);color:white;border-color:var(--ink)}
+
+    .result-top{display:flex;justify-content:space-between;gap:22px;align-items:flex-start;margin-bottom:16px}
+    .result-label{color:var(--muted);font-size:.86rem;font-weight:750}
+    .result-value{font-size:clamp(2.2rem,5vw,4.3rem);font-weight:950;letter-spacing:-.06em;line-height:1}
+    .return-badge{background:var(--soft);color:var(--green-dark);border-radius:14px;padding:10px 12px;font-weight:900;white-space:nowrap}
+
+    .calc-chart{border:1px solid var(--line);border-radius:20px;padding:12px;margin:18px 0}
+    .calc-chart svg{display:block;width:100%;height:230px}
+    .calc-chart .gridline{stroke:#e7ece8;stroke-width:1}
+    .calc-chart .principal{fill:none;stroke:#aab5ae;stroke-width:3;stroke-dasharray:7 7}
+    .calc-chart .growth{fill:none;stroke:var(--green);stroke-width:5;stroke-linecap:round;stroke-linejoin:round}
+    .calc-chart .growth-area{fill:url(#calcGradient)}
+
+    .legend{display:flex;gap:18px;flex-wrap:wrap;color:var(--muted);font-size:.83rem;font-weight:750}
+    .legend span{display:flex;align-items:center;gap:7px}
+    .legend i{display:inline-block;width:18px;height:4px;border-radius:999px;background:var(--green)}
+    .legend .dashed{background:repeating-linear-gradient(90deg,#aab5ae 0 6px,transparent 6px 10px)}
+
+    .summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
+    .summary-box{background:var(--bg);border-radius:16px;padding:13px}
+    .summary-box small{display:block;color:var(--muted);margin-bottom:3px}
+    .summary-box strong{font-size:1.05rem}
+
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .price-card{background:white;border:1px solid var(--line);border-radius:26px;padding:26px;display:flex;flex-direction:column}
+    .price-card.featured{background:var(--ink);color:white;transform:translateY(-8px)}
+    .price-card .label{color:var(--green);font-weight:850;text-transform:uppercase;letter-spacing:.08em;font-size:.76rem}
+    .price-card.featured .label{color:var(--lime)}
+    .price-card h3{font-size:1.34rem;margin:8px 0 0}
+    .price{font-size:2.7rem;font-weight:950;letter-spacing:-.055em;margin:15px 0}
+    .price small{font-size:.9rem;color:var(--muted);font-weight:600}
+    .featured .price small{color:#aab6ae}
+    .price-card ul{padding-left:19px;color:var(--muted);margin:0 0 25px}
+    .featured ul{color:#c5d0c8}
+    .price-card .btn{margin-top:auto}
+
+    .cta{
+      background:linear-gradient(135deg,var(--green-dark),var(--green));
+      color:white;border-radius:32px;padding:42px;
+      display:flex;justify-content:space-between;align-items:center;gap:30px;
+      box-shadow:var(--shadow);
+    }
+    .cta h2{font-size:clamp(2.2rem,5vw,4rem);line-height:1;margin:0 0 12px;letter-spacing:-.05em}
+    .cta p{margin:0;color:#dcebe3;max-width:650px}
+    .cta .btn{background:white;color:var(--ink)}
+
+    footer{padding:28px 0 42px;color:var(--muted);font-size:.86rem}
+    .footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+
+    @media(max-width:900px){
+      .nav-links a:not(.mini-cta){display:none}
+      .hero,.calculator-shell{grid-template-columns:1fr}
+      .visual{min-height:500px}
+      .grid-3,.pricing{grid-template-columns:1fr}
+      .price-card.featured{transform:none}
+    }
+
+    @media(max-width:620px){
+      .wrap{width:min(100% - 24px,1160px)}
+      .hero{padding-top:38px;gap:32px}
+      .visual{min-height:440px}
+      .dashboard{inset:0}
+      .float-card{display:none}
+      .controls{grid-template-columns:1fr}
+      .field-wide{grid-column:auto}
+      .calculator-shell{padding:20px}
+      .result-top{display:block}
+      .return-badge{display:inline-block;margin-top:12px}
+      .summary-grid{grid-template-columns:1fr}
+      .cta{padding:28px;display:block}
+      .cta .btn{margin-top:22px}
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <nav class="nav">
+      <a class="brand" href="#">
+        <span class="brand-mark">S</span>
+        STRING FINANCE
+      </a>
+      <div class="nav-links">
+        <a href="#kako">Kako deluje</a>
+        <a href="#kalkulator">Kalkulator</a>
+        <a href="#ponudba">Ponudba</a>
+        <a class="mini-cta" href="https://wa.me/38641649530" target="_blank" rel="noopener">Uvodni pogovor</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> Osebne finance brez kompliciranja</div>
+        <h1>Uredi svoj denar. <em>Gradi prihodnost.</em></h1>
+        <p class="lead">
+          Pomagam posameznikom urediti osebne finance, vzpostaviti sistem varčevanja in narediti prve premišljene korake pri dolgoročnem investiranju.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://wa.me/38641649530" target="_blank" rel="noopener">Dogovori se za pogovor →</a>
+          <a class="btn btn-secondary" href="#kalkulator">Preizkusi kalkulator</a>
+        </div>
+        <div class="trust-row">
+          <span><b>✓</b> Brez prodaje produktov</span>
+          <span><b>✓</b> Brez hitrih obljub</span>
+          <span><b>✓</b> Praktičen načrt</span>
+        </div>
+      </div>
+
+      <div class="visual" aria-hidden="true">
+        <div class="dashboard">
+          <div class="dash-top">
+            <div>
+              <div class="dash-label">Primer dolgoročnega načrta</div>
+              <div class="dash-value">118.420 €</div>
+            </div>
+            <div class="pill">+48.420 € rast</div>
+          </div>
+          <div class="hero-chart">
+            <svg viewBox="0 0 600 200" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="heroGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#dff26b" stop-opacity=".42"/>
+                  <stop offset="100%" stop-color="#dff26b" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <line class="gridline" x1="0" y1="40" x2="600" y2="40"/>
+              <line class="gridline" x1="0" y1="90" x2="600" y2="90"/>
+              <line class="gridline" x1="0" y1="140" x2="600" y2="140"/>
+              <path class="area" d="M0,170 C80,164 120,154 175,146 C230,138 270,124 320,114 C390,98 420,82 468,62 C520,40 554,27 600,13 L600,200 L0,200 Z"/>
+              <path class="line" d="M0,170 C80,164 120,154 175,146 C230,138 270,124 320,114 C390,98 420,82 468,62 C520,40 554,27 600,13"/>
+            </svg>
+          </div>
+          <div class="dash-grid">
+            <div class="metric"><small>Začetni vložek</small><strong>10.000 €</strong></div>
+            <div class="metric"><small>Mesečni vložek</small><strong>250 €</strong></div>
+            <div class="metric"><small>Obdobje</small><strong>20 let</strong></div>
+            <div class="metric"><small>Povprečni donos</small><strong>6 % letno</strong></div>
+          </div>
+        </div>
+        <div class="float-card">
+          <div class="tag">Prvi korak</div>
+          <strong>Finančni pregled</strong>
+          <p>Jasna slika, prioritetni koraki in realen osebni načrt.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="kako" class="wrap">
+      <div class="section-head">
+        <h2>Manj ugibanja. Več sistema.</h2>
+        <p>Ne gre za lovljenje naslednje vroče delnice. Gre za urejene temelje, ponovljiv proces in odločitve, ki jih razumeš.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="card-no">01</div>
+          <h3>Pregled stanja</h3>
+          <p>Pregledava prihodke, stroške, rezerve, dolgove, obstoječe naložbe in tvoje cilje.</p>
+        </article>
+        <article class="card">
+          <div class="card-no">02</div>
+          <h3>Jasen načrt</h3>
+          <p>Določiva prioritete, mesečni znesek, primerne instrumente in preprost način spremljanja.</p>
+        </article>
+        <article class="card">
+          <div class="card-no">03</div>
+          <h3>Disciplina</h3>
+          <p>Vzpostaviš rutino, ki deluje tudi takrat, ko so trgi nemirni in motivacija ni idealna.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="kalkulator" class="wrap">
+      <div class="calculator-shell">
+        <div class="calculator-copy">
+          <div class="eyebrow"><span class="dot"></span> Obrestno-obrestni račun</div>
+          <h2>Koliko lahko zraste tvoj denar?</h2>
+          <p>Vnesi začetni vložek, mesečna vplačila in obdobje. Nato primerjaj konservativni, uravnoteženi in optimistični scenarij.</p>
+
+          <div class="controls">
+            <div class="field">
+              <label for="initial">Začetni vložek (€)</label>
+              <input id="initial" type="number" min="0" step="500" value="10000">
+            </div>
+            <div class="field">
+              <label for="monthly">Mesečni vložek (€)</label>
+              <input id="monthly" type="number" min="0" step="25" value="250">
+            </div>
+            <div class="field">
+              <label for="years">Obdobje (leta)</label>
+              <input id="years" type="number" min="1" max="50" step="1" value="20">
+            </div>
+            <div class="field">
+              <label for="customRate">Lastni donos (%)</label>
+              <input id="customRate" type="number" min="0" max="20" step="0.1" value="6">
+            </div>
+          </div>
+
+          <p class="calc-note">Izračun je informativen, temelji na enakomernem mesečnem donosu in ne vključuje davkov, stroškov ali inflacije.</p>
+        </div>
+
+        <div class="scenario-result">
+          <div class="scenario-tabs">
+            <button class="scenario-btn" data-rate="4">Konservativno 4 %</button>
+            <button class="scenario-btn active" data-rate="6">Uravnoteženo 6 %</button>
+            <button class="scenario-btn" data-rate="8">Optimistično 8 %</button>
+            <button class="scenario-btn" data-rate="custom">Lastni donos</button>
+          </div>
+
+          <div class="result-top">
+            <div>
+              <div class="result-label">Ocenjena vrednost portfelja</div>
+              <div class="result-value" id="finalValue">0 €</div>
+            </div>
+            <div class="return-badge" id="rateBadge">6 % letno</div>
+          </div>
+
+          <div class="calc-chart">
+            <svg id="compoundChart" viewBox="0 0 720 260" preserveAspectRatio="none" role="img" aria-label="Graf rasti vložkov in vrednosti portfelja">
+              <defs>
+                <linearGradient id="calcGradient" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#1f8b5d" stop-opacity=".23"/>
+                  <stop offset="100%" stop-color="#1f8b5d" stop-opacity="0"/>
+                </linearGradient>
+              </defs>
+              <line class="gridline" x1="0" y1="55" x2="720" y2="55"/>
+              <line class="gridline" x1="0" y1="125" x2="720" y2="125"/>
+              <line class="gridline" x1="0" y1="195" x2="720" y2="195"/>
+              <path id="growthArea" class="growth-area" d=""></path>
+              <path id="principalLine" class="principal" d=""></path>
+              <path id="growthLine" class="growth" d=""></path>
+            </svg>
+          </div>
+
+          <div class="legend">
+            <span><i></i> Vrednost portfelja</span>
+            <span><i class="dashed"></i> Skupaj vplačano</span>
+          </div>
+
+          <div class="summary-grid">
+            <div class="summary-box">
+              <small>Skupaj vplačano</small>
+              <strong id="contributions">0 €</strong>
+            </div>
+            <div class="summary-box">
+              <small>Donos</small>
+              <strong id="investmentGain">0 €</strong>
+            </div>
+            <div class="summary-box">
+              <small>Delež rasti</small>
+              <strong id="growthShare">0 %</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="ponudba" class="wrap">
+      <div class="section-head">
+        <h2>Začni tam, kjer si.</h2>
+        <p>Izberi enkraten pregled ali podporo pri dolgoročnem izvajanju načrta.</p>
+      </div>
+
+      <div class="pricing">
+        <article class="price-card">
+          <div class="label">Najboljši začetek</div>
+          <h3>Finančni pregled</h3>
+          <div class="price">149 €</div>
+          <ul>
+            <li>90-minutni individualni pogovor</li>
+            <li>pregled finančne situacije</li>
+            <li>prioritetni naslednji koraki</li>
+            <li>osnovni načrt varčevanja in vlaganja</li>
+          </ul>
+          <a class="btn btn-secondary" href="https://wa.me/38641649530" target="_blank" rel="noopener">Dogovori termin</a>
+        </article>
+
+        <article class="price-card featured">
+          <div class="label">Za izvedbo načrta</div>
+          <h3>Mesečno mentorstvo</h3>
+          <div class="price">99 € <small>/ mesec</small></div>
+          <ul>
+            <li>en individualni klic mesečno</li>
+            <li>spremljanje napredka</li>
+            <li>pomoč pri novih odločitvah</li>
+            <li>podpora pri disciplini in izvedbi</li>
+          </ul>
+          <a class="btn btn-primary" href="https://wa.me/38641649530" target="_blank" rel="noopener">Začni pogovor</a>
+        </article>
+
+        <article class="price-card">
+          <div class="label">Za konkretna vprašanja</div>
+          <h3>Individualno svetovanje</h3>
+          <div class="price">90 € <small>/ ura</small></div>
+          <ul>
+            <li>pregled portfelja ali brokerja</li>
+            <li>organizacija osebnih financ</li>
+            <li>pomoč pri postavitvi sistema</li>
+            <li>brez dolgoročne vezave</li>
+          </ul>
+          <a class="btn btn-secondary" href="https://wa.me/38641649530" target="_blank" rel="noopener">Pošlji vprašanje</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap">
+      <div class="cta">
+        <div>
+          <h2>Prvi korak je preprost.</h2>
+          <p>Na kratkem uvodnem pogovoru preveriva tvojo situacijo, cilje in ali ti lahko pri tem dejansko pomagam.</p>
+        </div>
+        <a class="btn" href="https://wa.me/38641649530" target="_blank" rel="noopener">Piši mi na WhatsApp →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <span>© 2026 STRING. Vse pravice pridržane.</span>
+      <span>Finančno izobraževanje in mentoring. Brez upravljanja premoženja ali zagotavljanja donosov.</span>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const initialInput = document.getElementById('initial');
+      const monthlyInput = document.getElementById('monthly');
+      const yearsInput = document.getElementById('years');
+      const customRateInput = document.getElementById('customRate');
+      const buttons = [...document.querySelectorAll('.scenario-btn')];
+
+      const finalValue = document.getElementById('finalValue');
+      const contributions = document.getElementById('contributions');
+      const investmentGain = document.getElementById('investmentGain');
+      const growthShare = document.getElementById('growthShare');
+      const rateBadge = document.getElementById('rateBadge');
+
+      const growthLine = document.getElementById('growthLine');
+      const principalLine = document.getElementById('principalLine');
+      const growthArea = document.getElementById('growthArea');
+
+      let selectedRate = 6;
+      let customSelected = false;
+
+      const euro = new Intl.NumberFormat('sl-SI', {
+        style: 'currency',
+        currency: 'EUR',
+        maximumFractionDigits: 0
+      });
+
+      function compoundSeries(initial, monthly, years, annualRate) {
+        const months = Math.max(1, Math.round(years * 12));
+        const monthlyRate = Math.pow(1 + annualRate / 100, 1 / 12) - 1;
+        let balance = initial;
+        const series = [{month: 0, balance, principal: initial}];
+
+        for (let m = 1; m <= months; m++) {
+          balance = balance * (1 + monthlyRate) + monthly;
+          series.push({
+            month: m,
+            balance,
+            principal: initial + monthly * m
+          });
+        }
+        return series;
+      }
+
+      function pathFor(series, key, maxValue) {
+        const width = 720;
+        const height = 230;
+        const top = 10;
+        const points = series.map((d, i) => {
+          const x = (i / (series.length - 1)) * width;
+          const y = top + (1 - d[key] / maxValue) * height;
+          return `${x.toFixed(2)},${y.toFixed(2)}`;
+        });
+        return points.map((p, i) => `${i === 0 ? 'M' : 'L'}${p}`).join(' ');
+      }
+
+      function render() {
+        const initial = Math.max(0, Number(initialInput.value) || 0);
+        const monthly = Math.max(0, Number(monthlyInput.value) || 0);
+        const years = Math.min(50, Math.max(1, Number(yearsInput.value) || 1));
+        const rate = customSelected ? Math.max(0, Number(customRateInput.value) || 0) : selectedRate;
+
+        const series = compoundSeries(initial, monthly, years, rate);
+        const end = series[series.length - 1];
+        const paid = end.principal;
+        const gain = Math.max(0, end.balance - paid);
+        const share = end.balance > 0 ? gain / end.balance * 100 : 0;
+
+        finalValue.textContent = euro.format(end.balance);
+        contributions.textContent = euro.format(paid);
+        investmentGain.textContent = euro.format(gain);
+        growthShare.textContent = `${share.toFixed(0)} %`;
+        rateBadge.textContent = `${rate.toLocaleString('sl-SI', {maximumFractionDigits: 1})} % letno`;
+
+        const maxValue = Math.max(end.balance, paid, 1) * 1.08;
+        const growthPath = pathFor(series, 'balance', maxValue);
+        const principalPath = pathFor(series, 'principal', maxValue);
+
+        growthLine.setAttribute('d', growthPath);
+        principalLine.setAttribute('d', principalPath);
+        growthArea.setAttribute('d', `${growthPath} L720,240 L0,240 Z`);
+      }
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          buttons.forEach(b => b.classList.remove('active'));
+          button.classList.add('active');
+
+          if (button.dataset.rate === 'custom') {
+            customSelected = true;
+          } else {
+            customSelected = false;
+            selectedRate = Number(button.dataset.rate);
+          }
+          render();
+        });
+      });
+
+      [initialInput, monthlyInput, yearsInput, customRateInput].forEach(input => {
+        input.addEventListener('input', render);
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>
