@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Praktična pomoč pri urejanju osebnih financ, varčevanju in prvih korakih pri investiranju." />
+  <title>Finančni mentoring | Uredi svoj denar</title>
+  <style>
+    :root {
+      --bg: #f7f8f5;
+      --card: #ffffff;
+      --text: #142018;
+      --muted: #617067;
+      --accent: #1f7a4d;
+      --accent-dark: #155b39;
+      --line: #dfe6e1;
+      --soft: #edf5f0;
+      --shadow: 0 18px 50px rgba(20, 32, 24, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      width: min(1080px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      padding: 24px 0;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      font-size: 0.9rem;
+    }
+
+    .hero {
+      padding: 72px 0 48px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.8rem;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 7vw, 5.6rem);
+      line-height: 0.98;
+      margin: 0 0 24px;
+      letter-spacing: -0.05em;
+    }
+
+    .lead {
+      font-size: 1.18rem;
+      color: var(--muted);
+      max-width: 700px;
+      margin-bottom: 30px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.2s ease;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+    }
+
+    .btn-primary:hover { background: var(--accent-dark); transform: translateY(-1px); }
+
+    .btn-secondary {
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .hero-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      border-radius: 28px;
+      padding: 28px;
+    }
+
+    .hero-card strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+    }
+
+    .checklist {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .checklist li {
+      padding: 11px 0 11px 30px;
+      position: relative;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .checklist li:last-child { border-bottom: 0; }
+
+    .checklist li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 800;
+    }
+
+    section {
+      padding: 54px 0;
+    }
+
+    .section-title {
+      max-width: 720px;
+      margin-bottom: 28px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      margin: 0 0 12px;
+    }
+
+    .section-title p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 24px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .price-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .price {
+      font-size: 2.2rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+    }
+
+    .price small {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-weight: 500;
+    }
+
+    .price-card ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .note {
+      margin-top: 24px;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .cta {
+      background: var(--text);
+      color: white;
+      border-radius: 30px;
+      padding: 42px;
+      display: flex;
+      justify-content: space-between;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .cta h2 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+
+    .cta p {
+      margin: 0;
+      color: #cbd6cf;
+      max-width: 650px;
+    }
+
+    footer {
+      padding: 28px 0 40px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 820px) {
+      .hero,
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="brand">STRING FINANCE</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero wrap">
+      <div>
+        <div class="eyebrow">Osebne finance brez kompliciranja</div>
+        <h1>Uredi svoj denar. Začni vlagati z načrtom.</h1>
+        <p class="lead">
+          Pomagam posameznikom urediti osebne finance, vzpostaviti sistem varčevanja in narediti prve premišljene korake pri investiranju. Brez hitrih obljub, brez nepotrebnega žargona in brez prodajanja sanj.
+        </p>
+        <div class="actions">
+          <a class="btn btn-primary" href="https://wa.me/38641649530" target="_blank" rel="noopener">Dogovori se za uvodni pogovor</a>
+          <a class="btn btn-secondary" href="#ponudba">Poglej ponudbo</a>
+        </div>
+      </div>
+
+      <aside class="hero-card">
+        <strong>Skupaj lahko uredimo:</strong>
+        <ul class="checklist">
+          <li>pregled prihodkov, stroškov in rezerv</li>
+          <li>realen načrt varčevanja</li>
+          <li>osnove ETF-jev, delnic in brokerjev</li>
+          <li>strukturo portfelja glede na tvoje cilje</li>
+          <li>avtomatizacijo in disciplino pri vlaganju</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="wrap">
+      <div class="section-title">
+        <h2>Za koga je to?</h2>
+        <p>Za ljudi, ki vedo, da bi morali bolje upravljati svoj denar, vendar ne vedo, kje začeti ali kako vztrajati.</p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <h3>Denar stoji na računu</h3>
+          <p>Imaš prihranke, vendar nimaš jasnega načrta, kaj z njimi narediti.</p>
+        </div>
+        <div class="card">
+          <h3>Želiš začeti vlagati</h3>
+          <p>ETF-ji, delnice, brokerji in davki se ti zdijo preveč zapleteni.</p>
+        </div>
+        <div class="card">
+          <h3>Manjka ti sistem</h3>
+          <p>Začneš varčevati, nato popustiš. Potrebuješ strukturo, spremljanje in odgovornost.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap" id="ponudba">
+      <div class="section-title">
+        <h2>Enostavna ponudba</h2>
+        <p>Najprej uredimo temelje, nato pa po potrebi nadaljujemo z mentorstvom.</p>
+      </div>
+
+      <div class="grid">
+        <div class="price-card">
+          <div>
+            <h3>Finančni pregled</h3>
+            <div class="price">149 €</div>
+          </div>
+          <ul>
+            <li>90-minutni individualni pogovor</li>
+            <li>pregled trenutne finančne situacije</li>
+            <li>jasni naslednji koraki</li>
+            <li>osnovna struktura varčevanja in vlaganja</li>
+          </ul>
+        </div>
+
+        <div class="price-card">
+          <div>
+            <h3>Mesečno mentorstvo</h3>
+            <div class="price">99 € <small>/ mesec</small></div>
+          </div>
+          <ul>
+            <li>en individualni klic mesečno</li>
+            <li>spremljanje napredka</li>
+            <li>pomoč pri novih odločitvah</li>
+            <li>podpora pri disciplini in izvedbi</li>
+          </ul>
+        </div>
+
+        <div class="price-card">
+          <div>
+            <h3>Individualno svetovanje</h3>
+            <div class="price">90 € <small>/ ura</small></div>
+          </div>
+          <ul>
+            <li>za konkretna vprašanja</li>
+            <li>pregled portfelja ali brokerjev</li>
+            <li>pomoč pri organizaciji financ</li>
+            <li>brez dolgoročne vezave</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="note">
+        Storitev je namenjena finančnemu izobraževanju, organizaciji osebnih financ in mentorstvu. Ne vključuje upravljanja premoženja, posredovanja pri finančnih produktih ali zagotavljanja donosov.
+      </p>
+    </section>
+
+    <section class="wrap">
+      <div class="cta">
+        <div>
+          <h2>Prvi korak je preprost.</h2>
+          <p>Na kratkem uvodnem pogovoru preveriva tvojo situacijo, cilje in ali ti lahko pri tem dejansko pomagam.</p>
+        </div>
+        <a class="btn btn-primary" href="https://wa.me/38641649530" target="_blank" rel="noopener">Piši mi na WhatsApp</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">© 2026 STRING. Vse pravice pridržane.</div>
+  </footer>
+</body>
+</html>
